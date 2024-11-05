@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincolo di Bilancio</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #1c1c1c; /* Colore di sfondo scuro */
+            color: #e0e0e0; /* Colore del testo chiaro */
+        }
+        #vincoloChart {
+            height: 300px; /* Altezza fissa per il grafico */
+            width: 100%; /* Larghezza piena per il grafico */
+        }
+        .result-container {
+            display: none; /* Nasconde i risultati all'inizio */
+        }
+        h1, h4 {
+            color: #f0f0f0; /* Colore del titolo e dei sottotitoli */
+        }
+        .btn-primary {
+            background-color: #007bff; /* Blu più scuro */
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Blu scuro al passaggio del mouse */
+            border-color: #0056b3;
+        }
+        .chartjs-render-monitor {
+            background-color: rgba(0, 0, 0, 0.8); /* Sfondo per il grafico */
+        }
+        .alert {
+            background-color: #343a40; /* Colore di sfondo per le allerta */
+            color: #f0f0f0; /* Colore del testo nelle allerta */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-3">
+        <h1 class="text-center mb-4">Calcolo del Vincolo di Bilancio</h1>
+        
+        <form id="vincoloForm" class="mb-3">
+            <div class="form-row align-items-end">
+                <div class="col">
+                    <label for="px">Prezzo del bene X (€):</label>
+                    <input type="number" id="px" class="form-control" required>
+                </div>
+                <div class="col">
+                    <label for="py">Prezzo del bene Y (€):</label>
+                    <input type="number" id="py" class="form-control" required>
+                </div>
+                <div class="col">
+                    <label for="reddito">Reddito totale (€):</label>
+                    <input type="number" id="reddito" class="form-control" required>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mt-4">Calcola</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="result-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 id="costoMaxX" class="mb-3"></h4>
+                    <h4 id="costoMaxY" class="mb-3"></h4>
+                    <h4 id="budgetRimanente"></h4>
+                </div>
+                <div class="col-md-6">
+                    <h4 id="quantitaMassimaTitle" style="display: block;">Quantità Massima</h4>
+                    <h4 id="quantitaMassimaX" class="mb-3"></h4>
+                    <h4 id="quantitaMassimaY"></h4>
+                </div>
+            </div>
+            <canvas id="vincoloChart" class="mt-4"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
